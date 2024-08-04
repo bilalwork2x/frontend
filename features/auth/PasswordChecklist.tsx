@@ -2,8 +2,8 @@ import { useFormContext } from "react-hook-form"
 import { RegisterFormFields } from "./RegisterForm"
 
 export default function PasswordChecklist() {
-  const { getValues, watch, formState } = useFormContext<RegisterFormFields>()
-  if(!formState.isSubmitted) {
+  const { getValues, watch, formState, getFieldState } = useFormContext<RegisterFormFields>()
+  if(!formState.isSubmitted || !getFieldState('password').invalid) {
     return;
   }
   watch('password')
